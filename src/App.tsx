@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  let [os, setOS] = useState('Unkown')
+  const [os, setOS] = useState('Unkown')
+  const [width, setWidth] = useState<number>(window.innerWidth);
+  const [isMobile, setIsMobile] = useState(false);
 
   function getOperatingSystem(window: any) {
     let operatingSystem = 'Not known';
@@ -14,14 +16,43 @@ function App() {
     return operatingSystem;
   }
 
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+    if (width <= 768) {
+      setIsMobile(true);
+    }
+  }
+
+  function handleOperatingSystem() {
+    setOS(getOperatingSystem(window));
+  }
+
+
   useEffect(() => {
-    async function getOS() {
-      setOS(getOperatingSystem(window));
+    async function getData() {
+      handleOperatingSystem();
+      handleWindowSizeChange();
+
+      if (isMobile === true) {
+        if (os === 'Linux' || os === 'UNIX') {
+          setOS('Android');
+        } else {
+
+        }
+        switch(os) {
+          case 'Linux':
+          case 'UNIX':
+            setOS('Android or mobile Linux');
+            break;
+          case 'MacOS':
+            setOS('iOS');
+        }
+      }
       console.log(os);
     };
 
-    getOS().then(() => console.log('Set OS'));
-  }, [os]);
+    getData().then(() => console.log('Set data'));
+  }, []);
 
   return (
     <div className="App">
