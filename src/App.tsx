@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  const [os, setOS] = useState('Unkown')
+  const [os, setOS] = useState('Unknown')
   const [width, setWidth] = useState<number>(window.innerWidth);
   const [isMobile, setIsMobile] = useState(false);
 
   function getOperatingSystem(window: any) {
-    let operatingSystem = 'Unkown';
+    let operatingSystem = 'Unknown';
     if (window.navigator.appVersion.indexOf('Win') !== -1) { operatingSystem = 'Windows'; }
     if (window.navigator.appVersion.indexOf('Mac') !== -1) { operatingSystem = 'MacOS'; }
     if (window.navigator.appVersion.indexOf('X11') !== -1) { operatingSystem = 'UNIX'; }
