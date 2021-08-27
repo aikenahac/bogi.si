@@ -7,12 +7,12 @@ function App() {
   const [isMobile, setIsMobile] = useState(false);
 
   function getOperatingSystem(window: any) {
-    let operatingSystem = 'Not known';
+    let operatingSystem = 'Unkown';
     if (window.navigator.appVersion.indexOf('Win') !== -1) { operatingSystem = 'Windows'; }
     if (window.navigator.appVersion.indexOf('Mac') !== -1) { operatingSystem = 'MacOS'; }
     if (window.navigator.appVersion.indexOf('X11') !== -1) { operatingSystem = 'UNIX'; }
     if (window.navigator.appVersion.indexOf('Linux') !== -1) { operatingSystem = 'Linux'; }
-
+    
     return operatingSystem;
   }
 
@@ -58,10 +58,13 @@ function App() {
     <div className="App">
       <header className="App-header">
         {
-          os === 'Windows' ?
-            <h1 className="title disable-select">Uporablaš {os}... Prsežm da si res bogi.</h1>
+          os === 'Unknown' ?
+            <h1 className="title disable-select">Ja nimam pou kurca pojma kaj uporablaš. Get help.</h1>
             :
-            <h1 className="title disable-select">Uporablaš {os}. Nisi bogi, lep dan.</h1>
+            os === 'Windows' ?
+              <h1 className="title disable-select">Uporablaš {os}... Prsežm da si res bogi.</h1>
+              :
+              <h1 className="title disable-select">Uporablaš {os}. Nisi bogi, lep dan.</h1>
         }
         <p className="text disable-select">Ja ne vem kaj tuki dt, <a href="https://github.com/aikenahac/bogi.si/issues">piš mi recommendation na github issue</a></p>
       </header>
