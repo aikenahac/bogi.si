@@ -66,7 +66,7 @@ function App() {
               :
               <h1 className="title disable-select">Uporablaš {os}. Nisi bogi, lep dan.</h1>
         }
-        <p className="text disable-select">Če prhajaš iz simketouga TikToka, ja, ja si bogi. Get help></p>
+        <p className="text disable-select">Če prhajaš iz simketouga TikToka, ja, ja si bogi. In ja, rabš profesionalno pomoč.</p>
       </header>
     </div>
   );
